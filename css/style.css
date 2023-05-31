@@ -7,21 +7,24 @@ body {
   display: grid;
   grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 }
+.remove {
+  display: none;
+}
 
 /* HEADER */
-.header-menu {
+.menu {
   grid-column: 3/5;
   margin: 2rem 0;
   background-color: #fb5;
 }
 
-.header-menu ul {
+.menu ul {
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
 }
 
-.header-menu li a {
+.menu li a {
   display: block;
   padding: 10px;
   margin-right: 10px;
@@ -82,6 +85,10 @@ body {
   height: 370px;
   overflow-y: scroll;
   grid-column: 2;
+}
+
+.animais-lista li {
+  cursor: pointer;
 }
 
 .animais-lista::-webkit-scrollbar {
@@ -199,4 +206,70 @@ body {
   .copy {
     margin-bottom: 0px;
   }
+}
+
+/* JAVASCRIPT */
+
+/* LISTA ANIMAIS */
+.js .js-tabcontent section {
+  display: none;
+}
+
+.js-tabcontent section.ativo {
+  display: block !important;
+  animation: show 0.5s forwards; /*Forwards - Ficar no estado final da animação*/
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* FAQ */
+.js .js-accordion dd {
+  display: none;
+}
+
+.js .js-accordion dt::after {
+  content: "⬎";
+  margin-left: 10px;
+}
+
+.js .js-accordion dt.ativo::after {
+  content: "⬏";
+}
+
+.js-accordion dd.ativo {
+  display: block;
+  animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+/* Scroll Animação */
+.js .js-scroll {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.js .js-scroll.ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
